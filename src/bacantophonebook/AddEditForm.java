@@ -23,10 +23,10 @@ public class AddEditForm extends javax.swing.JFrame {
    public void UpdateStatus(){
         if(formMode){
             jTextStatus.setText("Add Contact Mode");
-            jButton1.setText(formMode ? "Save" : "Update");
+            btnSave.setText(formMode ? "Save" : "Update");
         }else{
             jTextStatus.setText("Edit Contact Mode");
-            jButton1.setText(formMode ? "Save" : "Update");
+            btnSave.setText(formMode ? "Save" : "Update");
         }
     } 
    
@@ -61,8 +61,8 @@ public class AddEditForm extends javax.swing.JFrame {
         JTextPhone = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextEmail = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         jTextStatus = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,6 +89,7 @@ public class AddEditForm extends javax.swing.JFrame {
 
         JTextName.setBackground(new java.awt.Color(204, 204, 255));
         JTextName.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        JTextName.setForeground(new java.awt.Color(255, 255, 255));
         JTextName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTextNameActionPerformed(evt);
@@ -112,21 +113,21 @@ public class AddEditForm extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 102));
-        jButton1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jButton1.setText("Save Entry");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setBackground(new java.awt.Color(0, 102, 102));
+        btnSave.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnSave.setText("Save Entry");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 102, 102));
-        jButton2.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jButton2.setText("Cancel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setBackground(new java.awt.Color(0, 102, 102));
+        btnCancel.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
 
@@ -138,9 +139,9 @@ public class AddEditForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnSave)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(btnCancel)
                 .addGap(7, 7, 7))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -186,8 +187,8 @@ public class AddEditForm extends javax.swing.JFrame {
                 .addComponent(jTextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(jTextStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -216,18 +217,21 @@ public class AddEditForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextEmailActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here
           CloseDialog();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         String Name = JTextName.getText();
         String Phone = JTextPhone.getText();
         String Email = jTextEmail.getText();
         String buildContact = "";
-       
+        
+        if(Name.isEmpty()||Phone.isEmpty()||Email.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Please Fill all the information");
+        }else{
         if(!Name.isEmpty()){
             buildContact += Name + ",";
         }else {
@@ -270,8 +274,8 @@ public class AddEditForm extends javax.swing.JFrame {
             }               
         }
        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }//GEN-LAST:event_btnSaveActionPerformed
+    }
     /**
      * @param args the command line arguments
      */
@@ -304,8 +308,8 @@ public class AddEditForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTextName;
     private javax.swing.JTextField JTextPhone;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

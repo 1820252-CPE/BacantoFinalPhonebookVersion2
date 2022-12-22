@@ -23,45 +23,45 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
     public void enable(){
         btnOn.setEnabled(false);
         btnOff.setEnabled(true);  
-        jButton1.setEnabled(true);
-        jButton2.setEnabled(true);
-        jButton3.setEnabled(true);
-        jButton4.setEnabled(true);
-        jButton5.setEnabled(true);
+        btnAddCE.setEnabled(true);
+        btnEditCL.setEnabled(true);
+        btnDeleteC.setEnabled(true);
+        btnReload.setEnabled(true);
+        btnSearch.setEnabled(true);
         jLabel1.setEnabled(true);
         jMenu1.setEnabled(true);
         jMenuBar1.setEnabled(true);
         jPanel2.setEnabled(true);
         jScrollPane1.setEnabled(true);
-        jTable1.setEnabled(true);
-        jTextSearch.setEnabled(true);
-        jTextStatus.setEnabled(true);
+        cTable.setEnabled(true);
+        cOntactSearch.setEnabled(true);
+        tExtStats.setEnabled(true);
         
     }
     @Override
     public void disable(){
         btnOn.setEnabled(true);
         btnOff.setEnabled(false);
-        jButton1.setEnabled(false);
-        jButton2.setEnabled(false);
-        jButton3.setEnabled(false);
-        jButton4.setEnabled(false);
-        jButton5.setEnabled(false);
+        btnAddCE.setEnabled(false);
+        btnEditCL.setEnabled(false);
+        btnDeleteC.setEnabled(false);
+        btnReload.setEnabled(false);
+        btnSearch.setEnabled(false);
         jLabel1.setEnabled(false);
         jMenu1.setEnabled(false);
         jMenuBar1.setEnabled(false);
         jPanel2.setEnabled(true);
         jScrollPane1.setEnabled(false);
-        jTable1.setEnabled(false);
-        jTextSearch.setEnabled(false);
-        jTextStatus.setEnabled(false);
+        cTable.setEnabled(false);
+        cOntactSearch.setEnabled(false);
+        tExtStats.setEnabled(false);
     }
     public BacantoPhonebookUI() {
         initComponents();
         btnOn.setEnabled(false);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(getWindowAdapter());
-        jTable1.getTableHeader().setFont(new java.awt.Font("Verdana", 0, 11));
+        cTable.getTableHeader().setFont(new java.awt.Font("Verdana", 0, 11));
         //load contacts into ArrayList
         ContactsUtility.readPhoneContacts();
         //bind into JTable
@@ -70,7 +70,7 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
     //make public and for enable to access from another class
     public void BindIntoJTable() {
         //clear jTable First
-        jTable1.removeAll();
+        cTable.removeAll();
         List<Contact> AllContacts = ContactsUtility.getAllContacts();
         if (AllContacts != null) {           
             int index = 1;
@@ -80,26 +80,26 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
             for (int i = 0; i < AllContacts.size(); i++) {
                 dtm.addRow(new String[4]);
             }
-            jTable1.setModel(dtm);
+            cTable.setModel(dtm);
 
             if (AllContacts.size() > 0) {
                 int row = 0;
                 for (Contact c : AllContacts) {
-                    jTable1.setValueAt(Integer.toString(index), row, 0);                                       
-                    jTable1.setValueAt(c.getName(), row, 1);
-                    jTable1.setValueAt(c.getPhoneNo(), row, 2);                   
-                    jTable1.setValueAt(c.getEmailAddress(), row, 3);
+                    cTable.setValueAt(Integer.toString(index), row, 0);                                       
+                    cTable.setValueAt(c.getName(), row, 1);
+                    cTable.setValueAt(c.getPhoneNo(), row, 2);                   
+                    cTable.setValueAt(c.getEmailAddress(), row, 3);
                     index++;                   
                     row++;
                 }
-                jTable1.getColumn("No").setMaxWidth(30);
-                jTable1.getColumn("Name").setMaxWidth(130);
-                jTable1.getColumn("Contacts No").setMaxWidth(110);
-                jTable1.getColumn("Email Address").setMaxWidth(110);
-                jTextStatus.setText("Finish Load Contact," + Integer.toString(AllContacts.size())
+                cTable.getColumn("No").setMaxWidth(30);
+                cTable.getColumn("Name").setMaxWidth(130);
+                cTable.getColumn("Contacts No").setMaxWidth(110);
+                cTable.getColumn("Email Address").setMaxWidth(110);
+                tExtStats.setText("Finish Load Contact," + Integer.toString(AllContacts.size())
                         + " records found");
             }else{
-                jTextStatus.setText("Finish Load Contact, No record Found");
+                tExtStats.setText("Finish Load Contact, No record Found");
             }
         }
     }
@@ -132,15 +132,15 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextSearch = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        cOntactSearch = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        btnReload = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jTextStatus = new javax.swing.JTextField();
+        cTable = new javax.swing.JTable();
+        btnAddCE = new javax.swing.JButton();
+        btnEditCL = new javax.swing.JButton();
+        btnDeleteC = new javax.swing.JButton();
+        tExtStats = new javax.swing.JTextField();
         btnOn = new javax.swing.JButton();
         btnOff = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -155,36 +155,36 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Search Contact:");
 
-        jTextSearch.setBackground(new java.awt.Color(204, 204, 255));
-        jTextSearch.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jTextSearch.setForeground(new java.awt.Color(255, 255, 255));
-        jTextSearch.addActionListener(new java.awt.event.ActionListener() {
+        cOntactSearch.setBackground(new java.awt.Color(204, 204, 255));
+        cOntactSearch.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        cOntactSearch.setForeground(new java.awt.Color(255, 255, 255));
+        cOntactSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextSearchActionPerformed(evt);
+                cOntactSearchActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(0, 102, 102));
-        jButton5.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jButton5.setText("Search");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setBackground(new java.awt.Color(0, 102, 102));
+        btnSearch.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(0, 102, 102));
-        jButton4.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jButton4.setText("Reload Entries");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnReload.setBackground(new java.awt.Color(0, 102, 102));
+        btnReload.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnReload.setText("Reload Entries");
+        btnReload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnReloadActionPerformed(evt);
             }
         });
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 255));
-        jTable1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        cTable.setBackground(new java.awt.Color(204, 204, 255));
+        cTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        cTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -195,39 +195,39 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
                 "Number", "Name", "Contact No", "Email Address"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(cTable);
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 102));
-        jButton1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jButton1.setText("Add Contact Entry");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddCE.setBackground(new java.awt.Color(0, 102, 102));
+        btnAddCE.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnAddCE.setText("Add Contact Entry");
+        btnAddCE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddCEActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 102, 102));
-        jButton2.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jButton2.setText("Edit Contact Log");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEditCL.setBackground(new java.awt.Color(0, 102, 102));
+        btnEditCL.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnEditCL.setText("Edit Contact Log");
+        btnEditCL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnEditCLActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(0, 102, 102));
-        jButton3.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jButton3.setText("Delete Contact ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteC.setBackground(new java.awt.Color(0, 102, 102));
+        btnDeleteC.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnDeleteC.setText("Delete Contact ");
+        btnDeleteC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnDeleteCActionPerformed(evt);
             }
         });
 
-        jTextStatus.setEditable(false);
-        jTextStatus.setBackground(new java.awt.Color(204, 204, 255));
-        jTextStatus.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextStatus.setForeground(new java.awt.Color(255, 255, 255));
+        tExtStats.setEditable(false);
+        tExtStats.setBackground(new java.awt.Color(204, 204, 255));
+        tExtStats.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        tExtStats.setForeground(new java.awt.Color(255, 255, 255));
 
         btnOn.setBackground(new java.awt.Color(0, 102, 102));
         btnOn.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
@@ -251,7 +251,7 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextStatus)
+            .addComponent(tExtStats)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,7 +260,7 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextSearch)
+                            .addComponent(cOntactSearch)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,11 +269,11 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnOff))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(btnAddCE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnReload, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEditCL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDeleteC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(10, 10, 10))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -283,25 +283,25 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cOntactSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnReload, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAddCE, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditCL, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnDeleteC, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOn)
                     .addComponent(btnOff))
                 .addGap(31, 31, 31)
-                .addComponent(jTextStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tExtStats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(102, 102, 102));
@@ -327,22 +327,22 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAddCEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCEActionPerformed
          //Add Contact
         AddEditForm Form = new AddEditForm();
         Form.setFormMode(true);//true for add mode
         Form.UpdateStatus();
         Form.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAddCEActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      int row = jTable1.getSelectedRow(); 
+    private void btnEditCLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCLActionPerformed
+      int row = cTable.getSelectedRow(); 
         //if row is -1 mean user have not select any row yet
         if(row != -1){
            
-            String nama = (String)jTable1.getValueAt(row,1);//cast object to string
-            String PhoneNo = (String)jTable1.getValueAt(row,2);//cast object to string
-            String email = (String)jTable1.getValueAt(row,3);//cast object to string
+            String nama = (String)cTable.getValueAt(row,1);//cast object to string
+            String PhoneNo = (String)cTable.getValueAt(row,2);//cast object to string
+            String email = (String)cTable.getValueAt(row,3);//cast object to string
            
             Contact C = new Contact();
             C.setEmailAddress(email);
@@ -356,15 +356,15 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
             dlg.setVisible(true);           
         }
        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnEditCLActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         int row = jTable1.getSelectedRow(); 
+    private void btnDeleteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCActionPerformed
+         int row = cTable.getSelectedRow(); 
         //if row is -1 mean user have not select any row yet
         if(row != -1){
-            String nama = (String)jTable1.getValueAt(row,1);//cast object to string
-            String PhoneNo = (String)jTable1.getValueAt(row,2);//cast object to string
-            String email = (String)jTable1.getValueAt(row,3);//cast object to string
+            String nama = (String)cTable.getValueAt(row,1);//cast object to string
+            String PhoneNo = (String)cTable.getValueAt(row,2);//cast object to string
+            String email = (String)cTable.getValueAt(row,3);//cast object to string
            
             Contact C = new Contact();
             C.setEmailAddress(email);
@@ -376,24 +376,24 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
                 ContactsUtility.deleteContacts(C);
             }
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnDeleteCActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnReloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReloadActionPerformed
          //reload Contacts       
         ContactsUtility.readPhoneContacts();       
         BindIntoJTable();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnReloadActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        String searchValue = jTextSearch.getText();
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        String searchValue = cOntactSearch.getText();
         List<Contact> contacts = ContactsUtility.searchContact(searchValue);
         ContactsUtility.setAllContacts(contacts);
         BindIntoJTable();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void jTextSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextSearchActionPerformed
+    private void cOntactSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cOntactSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextSearchActionPerformed
+    }//GEN-LAST:event_cOntactSearchActionPerformed
 
     private void btnOnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOnActionPerformed
         // TODO add your handling code here:
@@ -435,20 +435,20 @@ public class BacantoPhonebookUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddCE;
+    private javax.swing.JButton btnDeleteC;
+    private javax.swing.JButton btnEditCL;
     private javax.swing.JButton btnOff;
     private javax.swing.JButton btnOn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnReload;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JTextField cOntactSearch;
+    private javax.swing.JTable cTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextSearch;
-    private javax.swing.JTextField jTextStatus;
+    private javax.swing.JTextField tExtStats;
     // End of variables declaration//GEN-END:variables
 }
